@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${cabecera}"></title>
+ <link rel="icon" type="image/x-icon" href="img/logo.png" />
+ <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body>
+<header id="header">
+        <div id="logotipo">
+            <img src="img/logo.png" alt="Logotipo de la web" />
+        </div>
+        <h1>
+            <a href="index.html">
+                Libreria Don Miguel
+            </a>
+        </h1>
+    </header>
+
+	<!-- <h1 th:text="${titulo}" class="eltitulo"></h1>
+	<ul style="list-style-type:none;">				
+		<li><a th:href="@{/propiedad/una/{referencia}}">Ver propiedades por referencia</a></li>
+		<li><a th:href="@{/propiedad/todas}">Ver todas las propiedades</a></li>
+		<li><a th:href="@{/propiedad/{by-dni}}">Ver propiedades por dni</a></li>
+		<li><a th:href="@{/propiedad/tipo}">Ver propiedades por tipo</a></li>
+		
+		
+		</ul>
+		<!-- <a th:href="@{/home}">Back</a>--> -->
+</body>
+</html>

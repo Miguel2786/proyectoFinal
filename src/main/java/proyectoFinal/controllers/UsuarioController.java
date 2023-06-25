@@ -19,18 +19,14 @@ import proyectoFinal.models.entities.Usuario;
 import proyectoFinal.services.IUsuarioService;
 import proyectoFinal.paginator.PageRender;
 @Controller
-@RequestMapping("/")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
 	@Autowired
 	IUsuarioService usuarioService;
 
-	@GetMapping({"/","index",""})
-	public String m1() {
-		
-		return "/vista/index";
-	}
-	@GetMapping("/usuarios/listar")
+	
+	@GetMapping("/listar")
 	public String listar(@RequestParam(defaultValue="0")int page,Model model) {
 		Pageable pageRequest = PageRequest.of(page, 5);//de 5 en 5 elementos por pagina
 		Page<Usuario> usuarios = usuarioService.listar(pageRequest);
@@ -42,14 +38,14 @@ public class UsuarioController {
 		return "/usuarios/listar";
 	}
 	
-	@GetMapping("/usuarios/alta")
+	@GetMapping("/alta")
 	public String darAlta(Model model) {
 		model.addAttribute("titulo","Dar de alta a un nuevo usuario");
 		model.addAttribute("usuario", new Usuario());
 		return "usuarios/form";
 		
 	}
-	@PostMapping("/usuarios/form")
+	@PostMapping("/form")
 	public String guardar(@Valid Usuario usuario,BindingResult result,Model model,RedirectAttributes flash) {
 		if(result.hasErrors()) {
 			model.addAttribute("titulo","Editar un usuario");
@@ -60,7 +56,7 @@ public class UsuarioController {
 		return "redirect:/usuarios/listar";
 	}
 	//borrar y editar
-	@GetMapping("/usuarios/baja/{id}")
+	@GetMapping("/baja/{id}")
 	public String borrar(@PathVariable Long id,Model model,RedirectAttributes flash) {
 
 		model.addAttribute("titulo", "Listado de usuarios");
@@ -70,13 +66,13 @@ public class UsuarioController {
 		return "redirect:/usuarios/listar";
 	}
 	
-	@GetMapping("/usuarios/modificar/{id}")
+	@GetMapping("/modificar/{id}")
 	public String modificar(@PathVariable (name="id")Long id,Model model) {
 		model.addAttribute("titulo", "Modificar usuario");
 		model.addAttribute("usuario",usuarioService.findById(id));
 		return "usuarios/form";
 	}
-	@GetMapping("/usuarios/id/{id}")
+	@GetMapping("/id/{id}")
 	public String listarPorId(@PathVariable Long id, Model model) {
 		boolean noBarra=true;
 		model.addAttribute("titulo", "Listado de usuarios por id");
@@ -85,7 +81,7 @@ public class UsuarioController {
 		return "usuarios/listar";		
 	}
 	
-	@GetMapping("/usuarios/nombre/{nombre}")
+	@GetMapping("/nombre/{nombre}")
 	public String listarPorGenero(@PathVariable String nombre,@RequestParam(defaultValue="0") int page,Model model) {
 		Pageable pageRequest = PageRequest.of(page, 5);
 		Page<Usuario> usuarios = usuarioService.findByNombre(pageRequest,nombre);

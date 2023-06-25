@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="~{layout/layout::head}"></head>
+<body>
+	<header th:replace="~{layout/layout::header}"></header>
+	<div class="container">
+		<form th:action="@{/usuarios/form}" th:object="${usuario}"
+			method="post">
+			<h2 th:text="${titulo}" style="text-align:center; color:white;"></h2>
+			<table style="margin-left:30em; color:white;">
+				<tr>
+					<td>Nombre</td>
+					<td><input type="text" th:field="*{nombre}"
+						class="form-control" /></td>
+					<td th:if="${#fields.hasErrors('nombre')}"><small
+						th:errors="*{nombre}" class="form-text text-danger"></small></td>
+				</tr>
+				<tr>
+					<td>Apellido</td>
+					<td><input type="text" th:field="*{apellido}"
+						class="form-control" /></td>
+					<td th:if="${#fields.hasErrors('apellido')}"><small
+						th:errors="*{apellido}" class="form-text text-danger"></small></td>
+
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="text" th:field="*{email}"
+						class="form-control" /></td>
+					<td th:if="${#fields.hasErrors('email')}"><small
+						th:errors="*{email}" class="form-text text-danger"></small></td>
+
+				</tr>
+				<tr>
+					<td>Fecha</td>
+					<td><input type="text" th:field="*{createdAt}"
+						class="form-control" /></td>
+					<td th:if="${#fields.hasErrors('apellido')}"><small
+						th:errors="*{apellido}" class="form-text text-danger"></small></td>
+
+				</tr>
+				<tr>
+					<td><input type="submit" value="Guardar"
+						class="btn btn-primary" /></td>
+				</tr>
+			</table>
+			<input type="hidden" th:field="*{id}" />
+		</form>
+
+	</div>
+		<footer th:replace="~{layout/layout::footer}"></footer>
+	
+</body>
+</html>

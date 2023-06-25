@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="~{layout/layout::head}"></head>
+<body>
+	<header th:replace="~{layout/layout::header}"></header>
+	<div class="container">
+		<form th:action="@{/libros/form}" th:object="${libro}"
+			method="post">
+			<h2 th:text="${titulo}" style="text-align:center;color:white;"></h2>
+			<table style="margin-left:30em;color:white;">
+				<tr>
+					<td>Titulo</td>
+					<td><input type="text" th:field="*{titulo}"
+						class="form-control" /></td>
+					<td th:if="${#fields.hasErrors('titulo')}"><small
+						th:errors="*{titulo}" class="form-text text-danger"></small></td>
+				</tr>
+				<tr>
+					<td>Autor</td>
+					<td><input type="text" th:field="*{autor}"
+						class="form-control" /></td>
+					<td th:if="${#fields.hasErrors('autor')}"><small
+						th:errors="*{autor}" class="form-text text-danger"></small></td>
+
+				</tr>
+				<tr>
+					<td>Genero</td>
+					<td><input type="text" th:field="*{genero}"
+						class="form-control" /></td>
+					<td th:if="${#fields.hasErrors('genero')}"><small
+						th:errors="*{genero}" class="form-text text-danger"></small></td>
+
+				</tr>
+				<tr>
+					<td>Cantidad</td>
+					<td><input type="text" th:field="*{cantidadLibros}"
+						class="form-control" /></td>
+					<td th:if="${#fields.hasErrors('cantidadLibros')}"><small
+						th:errors="*{cantidadLibros}" class="form-text text-danger"></small></td>
+
+				</tr>
+				<tr>
+					<td><input type="submit" value="Guardar"
+						class="btn btn-primary" /></td>
+				</tr>
+			</table>
+			<input type="hidden" th:field="*{id}" />
+		</form>
+
+	</div>
+		<footer th:replace="~{layout/layout::footer}"></footer>
+	
+</body>
+</html>

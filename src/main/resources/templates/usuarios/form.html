@@ -5,9 +5,9 @@
 	<header th:replace="~{layout/layout::header}"></header>
 	<div class="container">
 		<form th:action="@{/usuarios/form}" th:object="${usuario}"
-			method="post">
-			<h2 th:text="${titulo}" style="text-align:center; color:white;"></h2>
-			<table style="margin-left:30em; color:white;">
+			method="post" enctype="multipart/form-data">
+			<h2 th:text="${titulo}" style="text-align: center; color: white;"></h2>
+			<table style="margin-left: 30em; color: white;">
 				<tr>
 					<td>Nombre</td>
 					<td><input type="text" th:field="*{nombre}"
@@ -40,6 +40,10 @@
 
 				</tr>
 				<tr>
+					<td>Foto</td>
+					<td><input type="file" name="file" class="form-control" /></td>
+				</tr>
+				<tr>
 					<td><input type="submit" value="Guardar"
 						class="btn btn-primary" /></td>
 				</tr>
@@ -48,7 +52,7 @@
 		</form>
 
 	</div>
-		<footer th:replace="~{layout/layout::footer}"></footer>
-	
+	<footer th:replace="~{layout/layout::footer}"></footer>
+
 </body>
 </html>

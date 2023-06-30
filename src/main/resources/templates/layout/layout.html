@@ -10,15 +10,24 @@
 	crossorigin="anonymous">
 
 <link rel="icon" type="image/x-icon" href="/img/logo3.png" />
- <link rel="stylesheet" type="text/css" href="/css/style.css" />
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+<style>
+.mibutton {
+            background-image:url("../img/salida.png");
+            background-size: 30px;
+            width: 34px;
+            height: 34px;
+            background-color:grey; 
+                        
+        }
 
+</style>
 </head>
 <body>
 	<header th:fragment="header">
 		<div id="logotipo">
-			<img src="/img/logo3.png" alt="Logotipo de la web" style="height:130px;display: block;
-	text-align: center;
-	margin: 0px auto;" />
+			<img src="/img/logo3.png" alt="Logotipo de la web"
+				style="height: 130px; display: block; text-align: center; margin: 0px auto;" />
 		</div>
 		<h1>
 			<a>BBDD Libreria Don Miguel</a>
@@ -26,7 +35,7 @@
 		<!-- Navigation bar bootstrap -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<div class="container-fluid">
-				<a class="navbar-brand" th:href="@{/}"><img src="/img/icon1.png"></a>
+				<a class="navbar-brand" th:href="@{/menu}"><img src="/img/icon1.png"></a>
 				<button class="navbar-toggler" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarNav"
 					aria-controls="navbarNav" aria-expanded="false"
@@ -37,16 +46,23 @@
 					<ul class="navbar-nav">
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" th:href="@{/libros/listar}">Libros</a></li>
-						
+
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" th:href="@{/libros/alta}"><img src="/img/icon2.png"></a></li>
-					
+							aria-current="page" th:href="@{/libros/alta}"><img
+								src="/img/icon2.png"></a></li>
+
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page" th:href="@{/usuarios/listar}">Usuarios</a></li>
-						
+
 						<li class="nav-item"><a class="nav-link active"
-							aria-current="page" th:href="@{/usuarios/alta}"><img src="/img/icon3.png"></a></li>
-						</ul>
+							aria-current="page" th:href="@{/usuarios/alta}"><img
+								src="/img/icon3.png"></a></li>
+						
+						<li class="nav-item"><form th:action="@{/logout}" method="post">
+								<!-- <input type="submit" value="Sign Out" /> -->
+								 <button class="mibutton" type="submit" ></button>
+							</form></li>
+					</ul>
 				</div>
 			</div>
 		</nav>
@@ -63,7 +79,8 @@
 
 	<footer th:fragment="footer">
 		<div class="container">
-			<a style="color:rgb(192, 192, 192);padding-left:35em;"><strong>libreriadonmiguel@gmail.com </strong><img src="/img/logo3.png" style="height:30px;"></a>
+			<a style="color: rgb(192, 192, 192); padding-left: 35em;"><strong>libreriadonmiguel@gmail.com
+			</strong><img src="/img/logo3.png" style="height: 30px;"></a>
 		</div>
 		<!-- Script de bootstrap enlazado vía CDN -->
 		<script

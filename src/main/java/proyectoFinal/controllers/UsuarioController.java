@@ -1,5 +1,9 @@
 package proyectoFinal.controllers;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
@@ -46,10 +51,24 @@ public class UsuarioController {
 		
 	}
 	@PostMapping("/form")
-	public String guardar(@Valid Usuario usuario,BindingResult result,Model model,RedirectAttributes flash) {
+	public String guardar(@Valid Usuario usuario,BindingResult result,@RequestParam("file") MultipartFile foto,Model model,RedirectAttributes flash) {
 		if(result.hasErrors()) {
 			model.addAttribute("titulo","Editar un usuario");
 			return "usuarios/form";
+		}
+		
+		if (!foto.isEmpty()) {
+			Path directorioRecursos = Paths.get("src/main/resources/static/upload");
+			String rootPath = directorioRecursos.toFile().getAbsolutePath();
+			try {
+				byte[] bytes = foto.getBytes();
+				Path rutaCompleta = Paths.get(rootPath + "/" + foto.getOriginalFilename());
+				Files.write(rutaCompleta, bytes);
+				flash.addFlashAttribute("info", "Subido correctamente " + foto.getOriginalFilename());
+				usuario.setFoto(foto.getOriginalFilename());
+			} catch (Exception e) {
+
+			}
 		}
 		usuarioService.save(usuario);
 		flash.addFlashAttribute("success", "Usuario guardado con éxito");
@@ -78,7 +97,7 @@ public class UsuarioController {
 		model.addAttribute("titulo", "Listado de usuarios por id");
 		model.addAttribute("usuarios",usuarioService.findById(id));
 		model.addAttribute("nobarra", noBarra);
-		return "usuarios/listar";		
+		return "usuarios/listar2";		
 	}
 	
 	@GetMapping("/nombre/{nombre}")

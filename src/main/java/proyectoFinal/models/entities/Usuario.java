@@ -46,6 +46,11 @@ private static final long serialVersionUID = 1L;
 	@NotNull
 	private LocalDate createdAt;
 
+	private String foto;
+	public String getFoto(){return foto;}
+	public void setFoto(String foto){this.foto=foto;}
+	
+	
 	public Long getId() {
 		return id;
 	}

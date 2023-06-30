@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class InicialController {
 	
-		@GetMapping({"/","index",""})
+		@GetMapping({"menu"})
 		public String m1() {
 			
 			return "/vista/index";

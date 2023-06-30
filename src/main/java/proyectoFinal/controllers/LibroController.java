@@ -1,5 +1,9 @@
 package proyectoFinal.controllers;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.validation.Valid;
@@ -50,10 +55,24 @@ public class LibroController {
 	}
 	
 	@PostMapping("/form")
-	public String guardar(@Valid Libro libro,BindingResult result,Model model,RedirectAttributes flash) {
+	public String guardar(@Valid Libro libro,BindingResult result,@RequestParam("file") MultipartFile foto,
+Model model,RedirectAttributes flash) {
 		if(result.hasErrors()) {
 			model.addAttribute("titulo","Editar un libro");
 			return "libros/form";
+		}
+		if (!foto.isEmpty()) {
+			Path directorioRecursos = Paths.get("src/main/resources/static/upload");
+			String rootPath = directorioRecursos.toFile().getAbsolutePath();
+			try {
+				byte[] bytes = foto.getBytes();
+				Path rutaCompleta = Paths.get(rootPath + "/" + foto.getOriginalFilename());
+				Files.write(rutaCompleta, bytes);
+				flash.addFlashAttribute("info", "Subido correctamente " + foto.getOriginalFilename());
+				libro.setFoto(foto.getOriginalFilename());
+			} catch (Exception e) {
+
+			}
 		}
 		libroService.save(libro);
 		flash.addFlashAttribute("success", "Libro guardado con éxito");
@@ -84,7 +103,7 @@ public class LibroController {
 		model.addAttribute("titulo", "Listado de libros por Id");
 		model.addAttribute("libros",libroService.findById(id));
 		model.addAttribute("nobarra", noBarra);
-		return "libros/listar";		
+		return "libros/listar2";		
 	}
 	
 	@GetMapping("/genero/{genero}")

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="~{layout/layout::head}">
+
+
+ </head>
+<body>
+	<header th:replace="~{layout/layout::header}"></header>
+	<div class="container" style="padding-left: 28em;">
+		<h2 class="text-primary" th:text="${titulo}"></h2>
+
+		<div class="card mb-3" th:each="usuario: ${usuarios}" style="max-width: 540px;">
+			<div class="row g-0">
+				<div class="col-md-4">
+					<img th:src="@{'/upload/' + ${usuario.foto}}" class="img-fluid rounded-start" th:alt="${usuario.foto}">
+					
+				</div>
+				<div class="col-md-8" >
+					<div class="card-body" >
+						<h5 class="card-title">Nombre y Apellidos: <a th:text="${usuario.nombre}"> </a> <a th:text="${usuario.apellido}"></a></h5>
+						<p class="card-text">Id: <a th:href="@{/usuarios/id/} + ${usuario.id}"><spam
+								th:text="${usuario.id}"></spam></a></p>
+						<p class="card-text">Email: <a th:text="${usuario.email}"></a></p>
+						
+						<p class="card-text">
+							<small class="text-body-secondary">Fecha alta: <a th:text="${usuario.createdAt}"></a></small>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<nav th:replace="~{paginator-nav :: paginator}"></nav>
+		
+	</div>
+	<footer th:replace="~{layout/layout::footer}"></footer>
+</body>
+</html>

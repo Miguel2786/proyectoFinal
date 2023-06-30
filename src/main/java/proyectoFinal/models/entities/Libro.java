@@ -43,7 +43,9 @@ public class Libro implements Serializable{
 	@Max(value =1_000)
 	private Integer cantidadLibros;
 
-	
+	private String foto;
+	public String getFoto(){return foto;}
+	public void setFoto(String foto){this.foto=foto;}
 	
 	public Long getId() {
 		return id;

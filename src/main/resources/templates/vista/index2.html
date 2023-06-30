@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<title>BBDD Libreria</title>
+<style>
+body {
+	background-color:#f2f2f2;
+	
+}
+
+h1,h2,h3 {
+	color:black;
+	text-align: center;
+	font-size: 30px;
+	font-family: "nevis";
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	margin-top: 10px;
+	
+}
+h2{
+	
+	font-size: 20px;
+	
+}
+h3{
+	
+	font-size: 15px;
+	
+}
+
+</style>
+
+</head>
+
+
+<body>
+<header>
+		
+		<h1>
+			<a> BBDD Libreria Don Miguel</a>
+		</h1>
+
+	
+		        <h2 th:inline="text">Bienvenido <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h2>
+		
+			  	
+				<h3><a th:href="@{/menu}">Pulsa para entrar</a></h3>
+		
+
+</header>
+</body>
+</html>

@@ -1,5 +1,5 @@
 INSERT INTO usuarios (nombre, apellido, email, created_at,foto) VALUES ('Juan', 'Pérez', 'juan.perez@example.com', '2012-01-01','');
-INSERT INTO usuarios (nombre, apellido, email, created_at,foto) VALUES ('María', 'Gómez', 'maria.gomez@example.com', '2012-02-15','');
+INSERT INTO usuarios (nombre, apellido, email, created_at,foto) VALUES ('Javier', 'Java', 'javi.java@example.com', '2012-02-15','');
 INSERT INTO usuarios (nombre, apellido, email, created_at,foto) VALUES ('Carlos', 'López', 'carlos.lopez@example.com', '2012-03-10','');
 INSERT INTO usuarios (nombre, apellido, email, created_at,foto) VALUES ('Ana', 'Rodríguez', 'ana.rodriguez@example.com', '2012-04-22','');
 INSERT INTO usuarios (nombre, apellido, email, created_at,foto) VALUES ('Luis', 'Martínez', 'luis.martinez@example.com', '2012-05-18','');

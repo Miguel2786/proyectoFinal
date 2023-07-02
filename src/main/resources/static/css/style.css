@@ -11,6 +11,15 @@ body {
 	padding-top: 10px;
 }
 
+.mibutton {
+            background-image:url("../img/salida.png");
+            background-size: 29px;
+            width: 31px;
+            height: 31px;
+            background-color:grey; 
+            padding-bottom: 18px;
+                        
+}
 
 /*#header #logotipo img {
 	display: block;

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="~{layout/layout::head}">
+</head>
+
+
+<body>
+
+  <header th:replace="~{layout/layout::header}"></header>
+  <div class="container" style="padding-top:10px;">
+	<div id="carouselExampleIndicators" class="carousel slide">
+			<div class="carousel-indicators">
+			  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+			  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+
+			</div>
+			<div class="carousel-inner" >
+			  <div class="carousel-item active" >
+				<a th:href="@{/libros/autor/Arthur Conan Doyle}">
+				<img src="img/sherlock2.png" class="d-block " alt="sherlock"></a>
+			  </div>
+			  <div class="carousel-item">
+			  <a th:href="@{/libros/genero/historica}">
+				<img src="img/historicas.png" class="d-block " alt="historicas"></a>
+			  </div>
+			  <div class="carousel-item">
+			   <a th:href="@{/libros/id/22}">
+				<img src="img/lovecraft.jpg" class="d-block " alt="lovecraft"></a>
+			  </div>
+			  <div class="carousel-item">
+			  	<a th:href="@{/libros/autor/Agatha Christie}">
+				<img src="img/agatha.jpg" class="d-block "  alt="agatha"></a>
+			  </div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+			  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			  <span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+			  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			  <span class="visually-hidden">Next</span>
+			</button>
+		  </div>
+	
+		<!--  <nav  th:replace="~{paginator-nav :: paginator}"></nav>
+		-->
+	</div>
+	<footer th:replace="~{layout/layout::footer}"></footer>
+</body>
+</html>

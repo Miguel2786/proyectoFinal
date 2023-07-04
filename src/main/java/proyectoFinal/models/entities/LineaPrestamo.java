@@ -26,9 +26,9 @@ public class LineaPrestamo implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "cantidad_disponible")
+	/*@Column(name = "cantidad_disponible")
 	private Integer cantidadDisponible;
-
+*/
 	@Column(name = "cantidad_prestada")
 	private Integer cantidadPrestada;
 
@@ -53,7 +53,7 @@ public class LineaPrestamo implements Serializable{
 		
 		//Calcular la cantidad disponible y prestada
 		
-		public void prestarLibro() {
+		/*public void prestarLibro() {
 			cantidadDisponible--;
 			cantidadPrestada++;
 		}
@@ -62,7 +62,7 @@ public class LineaPrestamo implements Serializable{
 			cantidadDisponible++;
 			cantidadPrestada--;
 		}
-
+*/
 		//getter y setter
 
 		public Long getId() {
@@ -73,7 +73,7 @@ public class LineaPrestamo implements Serializable{
 			this.id = id;
 		}
 
-		public Integer getCantidadDisponible() {
+		/*public Integer getCantidadDisponible() {
 			return cantidadDisponible;
 		}
 
@@ -81,7 +81,7 @@ public class LineaPrestamo implements Serializable{
 			this.cantidadDisponible = cantidadDisponible;
 		}
 
-		public Integer getCantidadPrestada() {
+		*/public Integer getCantidadPrestada() {
 			return cantidadPrestada;
 		}
 

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org">
+<head>
+<title>BBDD Libreria</title>
+<style>
+body {
+	background-color: #F1641E;
+	font-family: Arial, sans-serif;
+	display: block;
+	justify-content: center;
+	align-items: center;
+	height: 600px;
+	align-items: center;
+	padding-left:550px;
+	
+}
+
+form {
+	background-color: #fff;
+	padding: 10px;
+	border-radius: 15px;
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+	width:300px;
+}
+
+label {
+	display: block;
+	margin-bottom: 10px;
+	color: #333;
+	font-size:25px;
+	font-family: Courier New;/*Brush Script MT;*/
+}
+
+input[type="text"], input[type="password"] {
+	width: 93%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+}
+
+input[type="submit"] {
+	width: 100%;
+	padding: 10px;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: #555;
+}
+
+/*mas cosas*/
+.contenido-descripcion {
+    width: 60%;
+    display: flex;
+    height: 40%;
+    align-items: center;
+}
+
+.contenido-descripcion .titulo {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    
+}
+
+.contenido-descripcion .titulo span:first-child {
+    font-size: 50px; 
+    display: block;
+    font-weight: 300;
+}
+
+.contenido-descripcion .titulo span:last-child {
+    font-weight: 900;
+    font-size: 50px;
+}
+
+.contenido-descripcion .btn-link {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 25px 0;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #3dff3e;
+    border: 1px solid #555555;
+    animation: parpadeo 2s linear infinite;
+    transition: .7s ease;
+}
+
+
+
+</style>
+</head>
+<body>
+	<div class="contenido-descripcion">
+		<h1 class="titulo">
+			<span>BBDD</span> <span>Libreria Don Miguel</span>
+		</h1>
+	</div>
+	<form th:action="@{/login}" method="post">
+		<div>
+			<label> User Name (Miguel): <input type="text"
+				name="username" />
+			</label>
+		</div>
+		<div>
+			<label> Password (1234a): <input type="password"
+				name="password" />
+			</label>
+		</div>
+		<div>
+			<input type="submit" value="Sign In" />
+		</div>
+		<div th:if="${param.error}">Invalid username and password.</div>
+		<div th:if="${param.logout}">You have been logged out.</div>
+	</form>
+
+</body>
+
+
+</html>

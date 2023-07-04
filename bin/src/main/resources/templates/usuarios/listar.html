@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="~{layout/layout::head}">
+
+
+ </head>
+<body>
+	<header th:replace="~{layout/layout::header}"></header>
+	<div class="container">
+		<h2 class="text-primary" th:text="${titulo}"></h2>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Nombre</th>
+					<th>Apellido</th>
+					<th>Email</th>
+					<th>Fecha</th>
+					<td colspan="2"><strong>Acciones</strong></td>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="usuario: ${usuarios}">
+					
+					<td><a th:href="@{/usuarios/id/} + ${usuario.id}"><spam
+								th:text="${usuario.id}"></spam></a></td>
+					
+					
+					<td><a th:href="@{/usuarios/nombre/} + ${usuario.nombre}"><spam
+								th:text="${usuario.nombre}"></spam></a></td>
+					
+					<td th:text="${usuario.apellido}"></td>
+					<td th:text="${usuario.email}"></td>
+					<td th:text="${usuario.createdAt}"></td>
+					<td><a class="btn btn-primary btn-xs" th:href="@{/usuarios/baja/}+${usuario.id}">Dar de baja</a></td>
+					<td><a class="btn btn-primary btn-xs" th:href="@{/usuarios/modificar/}+${usuario.id}">Modificar</a></td>
+									
+				</tr>
+			</tbody>
+		</table>
+		<nav th:replace="~{paginator-nav :: paginator}"></nav>
+		
+	</div>
+	<footer th:replace="~{layout/layout::footer}"></footer>
+</body>
+</html>

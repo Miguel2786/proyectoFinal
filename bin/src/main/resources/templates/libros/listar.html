@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="~{layout/layout::head}">
+
+
+ </head>
+<body>
+	<header th:replace="~{layout/layout::header}"></header>
+	<div class="container">
+		<h2 class="text-primary" th:text="${titulo}"></h2>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Titulo</th>
+					<th>Autor</th>
+					<th>Genero</th>
+					<th>Cantidad</th>
+					<td colspan="2"><strong>Acciones</strong></td>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="libro: ${libros}">
+					
+					<td><a th:href="@{/libros/id/} + ${libro.id}"><spam
+								th:text="${libro.id}"></spam></a></td>
+					
+					<td th:text="${libro.titulo}"></td>
+					
+						<td><a th:href="@{/libros/autor/} + ${libro.autor}"><spam
+								th:text="${libro.autor}"></spam></a></td>
+					
+					<td><a th:href="@{/libros/genero/} + ${libro.genero}"><spam
+								th:text="${libro.genero}"></spam></a></td>
+					
+					<td th:text="${libro.cantidadLibros}"></td>
+					<td><a class="btn btn-primary btn-xs" th:href="@{/libros/baja/}+${libro.id}">Dar de baja</a></td>
+					<td><a class="btn btn-primary btn-xs" th:href="@{/libros/modificar/}+${libro.id}">Modificar</a></td>
+									
+				</tr>
+			</tbody>
+		</table>
+		<nav th:replace="~{paginator-nav :: paginator}"></nav>
+		
+	</div>
+	<footer th:replace="~{layout/layout::footer}"></footer>
+</body>
+</html>

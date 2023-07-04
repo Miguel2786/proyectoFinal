@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head th:replace="~{layout/layout::head}">
+
+
+</head>
+<body>
+	<header th:replace="~{layout/layout::header}"></header>
+	<div class="container" style="padding-left: 28em;" >
+		<h2 class="text-primary" th:text="${titulo}"></h2>
+
+		<div class="card mb-3" th:each="libro: ${libros}" style="max-width: 540px;">
+			<div class="row g-0">
+				<div class="col-md-4">
+					<img th:src="@{'/upload/' + ${libro.foto}}" class="img-fluid rounded-start" th:alt="${libro.foto}">
+				</div>
+				<div class="col-md-8" >
+					<div class="card-body" >
+						<h5 class="card-title">Titulo: <a th:text="${libro.titulo}"></a></h5>
+						<p class="card-text">Id: <a th:href="@{/libros/id/} + ${libro.id}"><spam
+								th:text="${libro.id}"></spam></a></p>
+						<p class="card-text">Autor: <a th:href="@{/libros/autor/} + ${libro.autor}"><spam
+								th:text="${libro.autor}"></spam></a></p>
+						<p class="card-text">Genero: <a th:href="@{/libros/genero/} + ${libro.genero}"><spam
+								th:text="${libro.genero}"></spam></a></p>
+						<p class="card-text">
+							<small class="text-body-secondary">Cantidad: <a th:text="${libro.cantidadLibros}"></a></small>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav th:replace="~{paginator-nav :: paginator}"></nav>
+
+	</div>
+	<footer th:replace="~{layout/layout::footer}"></footer>
+</body>
+</html>

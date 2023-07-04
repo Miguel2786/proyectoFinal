@@ -44,6 +44,14 @@
 						</div>
 						
 					</div>
+					<div class="form-group row">
+						<label for="fechaEntrega" class="col-sm-2 col-form-label"
+							th:text="'fechaEntrega'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{fechaEntrega}" class="form-control" />
+						</div>
+						
+					</div>
 						<div class="form-group row">
 						<label for="buscar_libros" class="col-sm-2 col-form-label"
 							th:text="'Buscar libros'"></label>
@@ -53,7 +61,7 @@
 						</div>
 					</div>
 					<table th:replace="~{prestamo/plantilla-linea :: itemsLinea}"></table>
-					<table id="cargarItemPrestamos"
+					<table id="cargarItemLibros"
 						class="table table-sm table-striped table-hover">
 						<thead>
 							<tr>
@@ -61,7 +69,9 @@
 								<th>Autor</th>
 								<th>Genero</th>
 								<th>Cantidad disponible</th>
-								<th>Cantidad prestada</th>
+								<!-- <th>Cantidad prestada</th> -->
+								<th>Eliminar</th>
+								
 							</tr>
 						</thead>
 						<tbody>

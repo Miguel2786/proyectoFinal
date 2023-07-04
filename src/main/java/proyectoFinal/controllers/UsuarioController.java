@@ -3,6 +3,7 @@ package proyectoFinal.controllers;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,15 +17,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import proyectoFinal.models.entities.Usuario;
 import proyectoFinal.services.IUsuarioService;
 import proyectoFinal.paginator.PageRender;
 @Controller
 @RequestMapping("/usuarios")
+@SessionAttributes("usuario")
 public class UsuarioController {
 
 	@Autowired
@@ -43,6 +47,23 @@ public class UsuarioController {
 		return "/usuarios/listar";
 	}
 	
+	// Controlador para ver individualmente una tienda con los pedidos
+		@GetMapping(value = "/ver/{id}")
+		@Transactional
+		public String ver(@PathVariable(value = "id") Long id, 
+				Map<String, Object> model, 
+				RedirectAttributes flash) {
+
+			Usuario usuario = usuarioService.findById(id);
+			if (usuario == null) {
+				flash.addFlashAttribute("warning", "El usuario no existe en la base de datos");
+				return "redirect:/usuarios/listar";
+			}
+			model.put("usuario", usuario);
+			model.put("titulo", "Información del usuario: " + usuario.getNombre()+" "+usuario.getApellido());
+			return "usuarios/ver";
+		}
+	//
 	@GetMapping("/alta")
 	public String darAlta(Model model) {
 		model.addAttribute("titulo","Dar de alta a un nuevo usuario");

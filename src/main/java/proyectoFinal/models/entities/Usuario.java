@@ -2,15 +2,20 @@ package proyectoFinal.models.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.ArrayList;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 
@@ -50,6 +55,29 @@ private static final long serialVersionUID = 1L;
 	public String getFoto(){return foto;}
 	public void setFoto(String foto){this.foto=foto;}
 	
+	//relacion usuario y prestamos de 1 a muchos bidireccional
+	@OneToMany(mappedBy = "usuario" , fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Prestamo> prestamos;
+
+	//constructor vacio del usuario
+	public Usuario() {
+		prestamos = new ArrayList<Prestamo>();
+	}
+	// Método para añadir prestamo  al usuario (añade elemento a la lista de prestamos)
+	public void addPrestamo(Prestamo prestamo) {
+		prestamos.add(prestamo);
+	}
+	
+	//Getter y setter de los prestamos
+
+	public List<Prestamo> getPrestamos(){
+		return prestamos;
+	}
+	public void setPrestamos(List<Prestamo> prestamos) {
+		this.prestamos=prestamos;
+	}
+	
+	//Getter y setter
 	
 	public Long getId() {
 		return id;

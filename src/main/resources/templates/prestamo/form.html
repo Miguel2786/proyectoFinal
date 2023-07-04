@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head th:replace="~{layout/layout :: head}"></head>
+
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<h4 class="card-title">																	
+					<a class="btn btn-light"
+						th:href="@{'/usuarios/ver/' + ${prestamo.usuario.id}}"
+						th:text="'&laquo; Usuario'"></a>
+				</h4>
+
+				<form th:action="@{/prestamo/form/}" th:object="${prestamo}"
+					method="post">
+
+					<div class="form-group row">
+						<label for="usuario" class="col-sm-2 col-form-label"
+							th:text="'Nombre Usuario'"></label>
+						<div class="col-sm-6">
+							<input name="usuario"
+								th:value="${prestamo.usuario.nombre}"
+								class="form-control" disabled='disabled' />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="usuario" class="col-sm-2 col-form-label"
+							th:text="'Apellido Usuario'"></label>
+						<div class="col-sm-6">
+							<input name="usuario"
+								th:value="${prestamo.usuario.apellido}"
+								class="form-control" disabled='disabled' />
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="referencia" class="col-sm-2 col-form-label"
+							th:text="'Referencia'"></label>
+						<div class="col-sm-6">
+							<input type="text" th:field="*{referencia}" class="form-control" />
+						</div>
+						
+					</div>
+					
+					
+					<div class="form-group row">
+						<div class="col-sm-4"></div>
+						<div class="col-sm-6">
+							<input type="submit" th:value="${titulo}"
+								class="btn btn-secondary" />
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="~{layout/layout :: footer}"></footer>
+</body>
+</html>

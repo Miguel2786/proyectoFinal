@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import proyectoFinal.models.dao.ILibroDao;
 import proyectoFinal.models.entities.Libro;
 
+
 @Service
 public class LibroServiceImp implements ILibroService{
 
@@ -59,4 +60,6 @@ public class LibroServiceImp implements ILibroService{
 	public Page<Libro> findByAutor(Pageable pageable, String autor) {
 		return libroDao.findByAutor(pageable, autor);
 	}
+	
+
 }

@@ -15,7 +15,7 @@
 					<th>Titulo</th>
 					<th>Autor</th>
 					<th>Genero</th>
-					<th>Cantidad</th>
+					<!-- <th>Cantidad</th> -->
 					<td colspan="2"><strong>Acciones</strong></td>
 
 				</tr>
@@ -34,7 +34,7 @@
 					<td><a th:href="@{/libros/genero/} + ${libro.genero}"><spam
 								th:text="${libro.genero}"></spam></a></td>
 					
-					<td th:text="${libro.cantidadLibros}"></td>
+					<!-- <td th:text="${libro.cantidadLibros}"></td> -->
 					<td><a class="btn btn-primary btn-xs" th:href="@{/libros/baja/}+${libro.id}">Dar de baja</a></td>
 					<td><a class="btn btn-primary btn-xs" th:href="@{/libros/modificar/}+${libro.id}">Modificar</a></td>
 									

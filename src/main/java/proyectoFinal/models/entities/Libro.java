@@ -36,13 +36,13 @@ public class Libro implements Serializable{
 	@NotEmpty
 	@Size(min = 3, max = 35)
 	private String genero;
-	
+	/*
 	@Column(name="cantidad_libros")
 	@NotNull
 	@Min(value = 0, message = " Cantidad de libros debe ser mayor que 0")
 	@Max(value =1_000)
 	private Integer cantidadLibros;
-
+*/
 	private String foto;
 	public String getFoto(){return foto;}
 	public void setFoto(String foto){this.foto=foto;}
@@ -70,11 +70,11 @@ public class Libro implements Serializable{
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
-
+/*
 	public Integer getCantidadLibros() {
 		return cantidadLibros;
 	}
-	
+	*/
 	public String getGenero() {
 		return genero;
 	}
@@ -82,11 +82,11 @@ public class Libro implements Serializable{
 	public void setGenero(String genero) {
 		this.genero = genero;
 	}
-
+/*
 	public void setCantidadLibros(Integer cantidadLibros) {
 		this.cantidadLibros = cantidadLibros;
 	}
-	
+	*/
 	
 	public static long getSerialversionuid() {
 		return serialVersionUID;

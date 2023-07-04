@@ -16,7 +16,7 @@
 					<th>Apellido</th>
 					<th>Email</th>
 					<th>Fecha</th>
-					<td colspan="2"><strong>Acciones</strong></td>
+					<td colspan="4"><strong>Acciones</strong></td>
 
 				</tr>
 			</thead>
@@ -33,6 +33,10 @@
 					<td th:text="${usuario.apellido}"></td>
 					<td th:text="${usuario.email}"></td>
 					<td th:text="${usuario.createdAt}"></td>
+					<td><a class="btn btn-success btn-xs"
+						th:href="@{/prestamo/form/} + ${usuario.id}"> Prestamo+ </a></td>
+					<td><a class="btn btn-primary btn-xs"
+						th:href="@{/usuarios/ver/} + ${usuario.id}"> Ver </a></td>
 					<td><a class="btn btn-primary btn-xs" th:href="@{/usuarios/baja/}+${usuario.id}">Dar de baja</a></td>
 					<td><a class="btn btn-primary btn-xs" th:href="@{/usuarios/modificar/}+${usuario.id}">Modificar</a></td>
 									

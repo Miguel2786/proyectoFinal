@@ -16,4 +16,5 @@ Libro findById(Long id);
 Page<Libro> findByGenero(Pageable pageable,String genero);
 Page<Libro> findByAutor(Pageable pageable,String autor);
 
+List<Libro> findByAutorText(String text);
 }

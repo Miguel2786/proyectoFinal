@@ -29,6 +29,8 @@ import proyectoFinal.services.IUsuarioService;
 		@Autowired
 		private IUsuarioService usuarioService;
 		
+		@Autowired
+		private ILibroService libroService;
 		
 		
 		@GetMapping("/form/{prestamoId}")
@@ -50,6 +52,11 @@ import proyectoFinal.services.IUsuarioService;
 			return "prestamo/form";
 		}
 		
+		// url que usara el js para autocompletar 
+		@GetMapping(value="/buscar-libros/{text}", produces= {"application/json"})
+		public @ResponseBody List<Libro> cargarLibros(@PathVariable String text){
+			return libroService.findByAutorText(text);
+		}
 		
 }
 

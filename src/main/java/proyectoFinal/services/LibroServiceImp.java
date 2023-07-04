@@ -61,5 +61,9 @@ public class LibroServiceImp implements ILibroService{
 		return libroDao.findByAutor(pageable, autor);
 	}
 	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Libro> findByAutorText(String text) {
+		return libroDao.findByAutorLikeIgnoreCase("%" + text + "%");	}
 
 }

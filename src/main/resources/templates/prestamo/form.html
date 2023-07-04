@@ -44,7 +44,29 @@
 						</div>
 						
 					</div>
-					
+						<div class="form-group row">
+						<label for="buscar_libros" class="col-sm-2 col-form-label"
+							th:text="'Buscar libros'"></label>
+						<div class="col-sm-6">
+							<input type="text" name="buscar_libros" id="buscar_libros"
+								class="form-control" />
+						</div>
+					</div>
+					<table th:replace="~{prestamo/plantilla-linea :: itemsLinea}"></table>
+					<table id="cargarItemPrestamos"
+						class="table table-sm table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Titulo</th>
+								<th>Autor</th>
+								<th>Genero</th>
+								<th>Cantidad disponible</th>
+								<th>Cantidad prestada</th>
+							</tr>
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
 					
 					<div class="form-group row">
 						<div class="col-sm-4"></div>
@@ -59,5 +81,6 @@
 	</div>
 
 	<footer th:replace="~{layout/layout :: footer}"></footer>
+	<script th:replace="~{prestamo/js/autocompletar-libros :: javascript}"></script>
 </body>
 </html>

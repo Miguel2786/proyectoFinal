@@ -15,5 +15,8 @@ public interface ILibroDao extends PagingAndSortingRepository<Libro,Long>,CrudRe
 	Page<Libro> findByGenero(Pageable pageable,String genero);
 	Page<Libro> findByAutor(Pageable pageable,String autor);
 	
+	@Query("select p from Libro p where p.autor like %?1%")
+	public List<Libro> findByAutorText(String text);
 	
+	public List<Libro> findByAutorLikeIgnoreCase(String text);
 }

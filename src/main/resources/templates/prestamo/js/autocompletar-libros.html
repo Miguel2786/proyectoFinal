@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<script type="text/javascript" th:fragment="javascript">
+		$(document).ready(function() {
+
+			$("#buscar_prestamos").autocomplete({
+
+				source : function(request, response) {
+					$.ajax({
+						url : "/prestamo/buscar-libros/" + request.term,
+						dataType : "json",
+						data : {
+							text : request.term
+						},
+						success : function(data) {
+							response($.map(data, function(item) {
+								return {
+									value : item.id,
+									label : item.titulo + ' ' + item.autor + ' ' + item.genero + ' ' + item.cantidadDisponible+ ' ' + item.cantidadPrestada,
+									titulo: item.titulo,
+									autor: item.autor,
+									genero: item.genero,
+									cantidadDisponible: item.cantidadDisponible,
+									cantidadPrestada: item.cantidadPrestada
+								};
+							}));
+						},
+					});
+				},
+				select : function(event, ui) {
+					//$("#buscar_libros").val(ui.item.label);
+					var linea = $("#plantillaItemsPrestamo").html();
+					linea = linea.replace(/{ID}/g, ui.item.value);
+					linea = linea.replace(/{TITULO}/g, ui.item.titulo);
+					linea = linea.replace(/{AUTOR}/g, ui.item.autor);
+					linea = linea.replace(/{GENERO}/g, ui.item.genero);
+					linea = linea.replace(/{CANTIDADDISPONIBLE}/g, ui.item.cantidadDisponible);
+					linea = linea.replace(/{CANTIDADPRESTADA}/g, ui.item.cantidadPrestada);
+
+					$("#cargarItemLibros tbody").append(linea);
+
+					return false;
+				}
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+FACTURA
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:util="urn:jsptagdir:/WEB-INF/tags/util">
+<head th:replace="~{layout/layout :: head}"></head>
+<body>
+	<header th:replace="~{layout/layout :: header}"></header>
+
+	<div class="container py-4">
+
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+
+				<h4 class="card-title">
+					<a th:href="@{'/usuarios/ver/' + ${prestamo.usuario.id}}"
+						class="btn btn-light btn-xs">&laquo; volver</a>
+				</h4>
+
+				<ul class="list-group my-2">
+					<li class="list-group-item list-group-item-primary"
+						th:text="'Datos del usuario'"></li>
+					<li class="list-group-item" th:text="${prestamo.usuario.id}"></li>
+					<li class="list-group-item" th:text="${prestamo.usuario.nombre}"></li>
+				</ul>
+
+				<ul class="list-group my-2">
+					<li class="list-group-item list-group-item-success"
+						th:text="'Datos del prestamo'"></li>
+					<li class="list-group-item" th:text="'Folio: ' + ${prestamo.id}"></li>
+					<li class="list-group-item"
+						th:text="'Referencia: ' + ${prestamo.referencia}"></li>
+					<li class="list-group-item"
+						th:text="'Fecha entrega: ' + ${prestamo.fechaEntrega}"></li>
+					<li class="list-group-item"
+						th:text="'Fecha a devolver: ' + ${prestamo.fechaDevolucion}"></li>
+				</ul>
+				<div class="alert alert-info my-4"
+					th:if="${#lists.isEmpty(prestamo.lineas)}"
+					th:text="'No hay líneas para la factura' + ${prestamo.referencia}"></div>
+
+				<table th:if="${not #lists.isEmpty(prestamo.lineas)}"
+					class="table table-striped table-hover table-bordered my-3">
+					<thead>
+						<tr>
+							<th>Libro</th>
+							<th>Autor</th>
+							<th>Genero</th>
+							<th>Cantidad disponible</th>
+							<th>Cantidad prestada</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="linea: ${prestamo.lineas}">
+							<td th:text="${linea.libro.titulo}"></td>
+							<td th:text="${linea.libro.autor}"></td>
+							<td th:text="${linea.libro.genero}"></td>
+							<td th:text="${linea.libro.cantidadLibros}"></td>
+							<td th:text="${linea.cantidadPrestada}"></td>
+						</tr>
+					</tbody>
+
+				</table>
+
+				<!-- <h5 class="float-right">
+					Total pedido <span th:text="${pedido.precioTotal}"
+						class="badge-secondary"></span>
+				</h5> -->
+
+				<!-- <div class="card border-info mb-4" style="max-width: 20rem;">
+					<div class="card-header">Descripción</div>
+					<div class="card-body">
+						<p class="card-text" th:text="${pedido.descripcion}"
+							th:if="${not #strings.isEmpty(pedido.descripcion)}"></p>
+						<h4 class="card-title"
+							th:if="${#strings.isEmpty(pedido.descripcion)}"
+							th:text="'No hay descripción'"></h4>
+					</div>
+				</div> -->
+
+				<a th:href="@{'/usuarios/ver/' + ${prestamo.usuario.id}}"
+					class="btn btn-light btn-xs">&laquo; volver</a>
+
+			</div>
+		</div>
+
+	</div>
+	<footer th:replace="~{layout/layout :: footer}"></footer>
+
+</body>
+</html>

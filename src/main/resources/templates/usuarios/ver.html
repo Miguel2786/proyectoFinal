@@ -32,7 +32,8 @@
 							<th>Referencia</th>
 							<th>Fecha entregada</th>
 							<th>Fecha a devolver</th>
-							
+							<th>ver</th>
+							<th>eliminar</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -41,6 +42,11 @@
 							<td th:text="${prestamo.referencia}"></td>
 							<td th:text="${prestamo.fechaEntrega}"></td>
 							<td th:text="${prestamo.fechaDevolucion}"></td>
+							<td><a class="btn btn-primary btn-sm" th:href="@{'/prestamo/ver/' + ${prestamo.id}}" th:text="'detalle'"></a></td>
+							<td><a class="btn btn-danger btn-sm" th:href="@{'/prestamo/eliminar/' + ${prestamo.id}}" th:text="'eliminar'"
+							 onclick="return confirm('¿Estas seguro que desea eliminar el prestamo?');"></a></td>
+							
+							
 						</tr>
 					</tbody>
 				</table>

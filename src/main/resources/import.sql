@@ -57,4 +57,4 @@ INSERT INTO libros (titulo, autor,genero,cantidad_libros,foto) VALUES ('En la co
 INSERT INTO libros (titulo, autor,genero,cantidad_libros,foto) VALUES ('Sinuhé el egipcio', 'Mika Waltari','historica',2,'');
 INSERT INTO prestamos (fecha_entregar, fecha_devolver, referencia,usuario_id) VALUES ('2023-06-01', '2023-06-21','Diez negritos', 1);
 INSERT INTO lineas_prestamos (cantidad_prestada, libro_id, prestamo_id) VALUES ( 1,1, 1);
-
+INSERT INTO lineas_prestamos (cantidad_prestada, libro_id, prestamo_id) VALUES ( 1,2, 2);

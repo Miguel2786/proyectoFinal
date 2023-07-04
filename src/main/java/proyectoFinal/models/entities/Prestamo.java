@@ -63,6 +63,7 @@ public class Prestamo implements Serializable{
 	@JoinColumn(name = "prestamo_id")
 	private List<LineaPrestamo> lineas;
 	
+		
 	//getter y setter lineaprestamo
 	
 	

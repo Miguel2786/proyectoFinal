@@ -17,7 +17,7 @@
 				</div>
 				<div class="col-md-8" >
 					<div class="card-body" >
-						<h5 class="card-title">Nombre y Apellidos: <a th:text="${usuario.nombre}"> </a> <a th:text="${usuario.apellido}"></a></h5>
+						<h5 class="card-title">Nombre y Apellidos: <br/><a th:text="${usuario.nombre}"> </a> <a th:text="${usuario.apellido}"></a></h5>
 						<p class="card-text">Id: <a th:href="@{/usuarios/id/} + ${usuario.id}"><spam
 								th:text="${usuario.id}"></spam></a></p>
 						<p class="card-text">Email: <a th:text="${usuario.email}"></a></p>
